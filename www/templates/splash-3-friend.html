@@ -1,0 +1,23 @@
+<ion-view view-title="flosi" hide-nav-bar="true" class="splash-page">
+  <ion-content scroll="false">
+
+    <div class="padding logo">
+      <h1>Flosi</h1>
+    </div>
+
+    <div class="introWelcome">Who do you want to Challenge?</div>
+
+<form id="forFriend">
+    <input class="email-input" type="text" placeholder=" Friends Email" ng-model="form.friendEmail" onfocus="this.placeholder = ''"
+           onblur="this.placeholder = 'Friends\' Email'" />
+  <input class="email-input" type="text" placeholder=" Friends Name" ng-model="form.friendName" onfocus="this.placeholder = ''"
+         onblur="this.placeholder = 'Friends\' Name'" />
+  <button class="button button-assertive" id="nameEmailSubmit" ng-click="saveFriendInfo(form.friendName, form.friendEmail)">
+    Submit
+  </button>
+</form>
+
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,22 @@
+<ion-view view-title="flosi" hide-nav-bar="true" class="splash-page">
+  <ion-content scroll="false">
+
+    <div class="padding logo">
+      <h1>Flosi</h1>
+    </div>
+
+    <div class="introWelcome">What would you like to do?</div>
+
+<form>
+
+  <input class="email-input" type="text" placeholder="Task" ng-model="form.task" onfocus="this.placeholder = ''"
+         onblur="this.placeholder = 'Task'" />
+  <button class="button button-assertive" id="nameEmailSubmit" ng-click="saveTask(form.task)">
+    Submit
+  </button>
+</form>
+
+
+
+  </ion-content>
+</ion-view>

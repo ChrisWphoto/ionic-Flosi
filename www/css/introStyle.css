@@ -1,0 +1,95 @@
+/*Style Sheet for Intro*/
+
+.intro {
+  color: #DCFBE9;
+}
+
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(122, 188, 255, 1)), color-stop(44%, rgba(96, 171, 248, 1)), color-stop(100%, rgba(64, 150, 238, 1)));
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+#logo {
+
+  text-align:center;
+  color: #fff;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight:bold;
+
+  font-size:82px;
+  margin: 45px 0px 80px 0px;
+}
+
+.introWelcome {
+  font-size: 40px;
+  line-height: 115%;
+  color: #fff;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  text-align: center;
+
+}
+
+#introTo {
+  font-size: 25px;
+  margin-top: 12px;
+}
+
+#slide1 {
+  position: relative;
+
+
+}
+#learnHow {
+  position: absolute;
+  width: 100%;
+  bottom: 80px;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 0px;
+  font-size: 35px;
+  font-stretch: expanded;
+  line-height: 105%;
+
+}
+
+#learnHow .ion-chevron-right {
+  position: absolute;
+  left:78%;
+  top:9%;
+}
+
+
+#list {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 30px;
+}
+#list ul {
+  margin: 0px 0;
+
+}
+#list ul li {
+  text-align: left;
+  list-style: decimal;
+  margin: 30px 0px;
+  line-height: 105%;
+}
+
+#startAppSlide .button {
+  position: absolute;
+  top:50%;
+  left:25%;
+  padding: 8px 50px;
+  font-size: 40px;
+  font-family:  "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+
+}
