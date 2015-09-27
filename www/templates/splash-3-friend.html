@@ -7,14 +7,22 @@
 
     <div class="introWelcome">Who do you want to Challenge?</div>
 
-<form id="forFriend">
-    <input class="email-input" type="text" placeholder=" Friends Email" ng-model="form.friendEmail" onfocus="this.placeholder = ''"
-           onblur="this.placeholder = 'Friends\' Email'" />
-  <input class="email-input" type="text" placeholder=" Friends Name" ng-model="form.friendName" onfocus="this.placeholder = ''"
-         onblur="this.placeholder = 'Friends\' Name'" />
-  <button class="button button-assertive" id="nameEmailSubmit" ng-click="saveFriendInfo(form.friendName, form.friendEmail)">
+<form
+    name="friendForm"
+    id="forFriend"
+    ng-submit="saveFriendInfo(form.friendName, form.friendEmail)">
+
+  <input class="email-input" type="email" placeholder=" Friends Email" ng-model="form.friendEmail" required/>
+  <input class="email-input" type="text" placeholder=" Friends Name" ng-model="form.friendName"  required/>
+
+  <button
+    type="submit"
+    class="button button-assertive"
+    ng-disabled="friendForm.$invalid"
+    id="nameEmailSubmit">
     Submit
   </button>
+
 </form>
 
 

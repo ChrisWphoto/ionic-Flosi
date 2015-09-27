@@ -6,12 +6,12 @@
     </div>
     <div class="container" >
       <div class="progress-wrapper">
-        <div class="progress-user-number">{{current}} / {{max}}</div>
-        <div class="progress-user">{{userName}} </div>
+        <div class="progress-user-number">{{userObj.taskCompleted}} / {{max}}</div>
+        <div class="progress-user">{{userObj.username}} </div>
         <div
           round-progress
           max="max"
-          current="current"
+          current="userObj.taskCompleted"
           color="#45ccce"
           bgcolor="#eaeaea"
           radius="100"
@@ -25,10 +25,12 @@
 
         </div>
       </div>
+
+
       <div class="progress-wrapper-friend">
 
-        <div class="progress-friend-number">{{current}} / {{max}}</div>
-        <div class="progressFriend">{{friendName}}</div>
+        <div class="progress-friend-number">0 / {{max}}</div>
+        <div class="progressFriend">{{userObj.friendName}}</div>
         <div id="FriendSemiCircle"
           round-progress
           max="max"
@@ -49,9 +51,10 @@
     </div>
     <div class="buttonDash">
     <button class="button button-assertive" id="taskDoneDash" ng-click="increment()">
-      Plus 1
+      {{userObj.task}}
     </button>
       </div>
+
 
 
   </ion-content>

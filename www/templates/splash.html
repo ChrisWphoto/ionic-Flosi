@@ -7,14 +7,31 @@
 
 
 
-<form>
-    <input class="email-input" type="text" placeholder=" Your Email" ng-model="form.email" onfocus="this.placeholder = ''"
-           onblur="this.placeholder = 'Your Email'" />
-  <input class="email-input" type="text" placeholder=" Your Name" ng-model="form.name" onfocus="this.placeholder = ''"
-         onblur="this.placeholder = 'Your Name'" />
-  <button class="button button-assertive" id="nameEmailSubmit" ng-click="signinEmailName(form.name, form.email)">
-    Submit
-  </button>
+<form
+  name="userEmailForm"
+  ng-submit="signinEmailName(form.name, form.email)">
+
+  <input
+    class="email-input"
+    type="email"
+    name="userEmail"
+    placeholder=" Your Email"
+    ng-model="form.email" required/>
+  <p ng-show="userEmailForm.userEmail.$invalid && !userEmailForm.userEmail.$pristine"
+     class="help-block"> Email address goes here :)
+  </p>
+  <input class="email-input" type="text" placeholder=" Your Name" ng-model="form.name"  required/>
+
+  <div style="width: 100%; margin: auto 0;">
+    <button
+      type="submit"
+      class="button button-assertive"
+      id="nameEmailSubmit"
+      ng-disabled="userEmailForm.$invalid">
+      Submit
+    </button>
+  </div>
+
 </form>
 
 

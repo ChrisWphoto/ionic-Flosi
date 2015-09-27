@@ -14,33 +14,38 @@ angular.module('flosi', ['ionic', 'flosi.controllers', 'flosi.services'])
 
       .state('intro', {
         url: '/',
-        templateUrl: '/templates/intro.html',
+        templateUrl: 'templates/intro.html',
         controller: 'SplashCtrl'
       })
 
       .state('start', {
         url: '/start',
-        templateUrl: '/templates/splash.html',
+        templateUrl: 'templates/splash.html',
         controller: 'SplashCtrl'
       })
 
       .state('start-task', {
         url: '/start-task',
-        templateUrl: '/templates/splash-2-task.html',
+        templateUrl: 'templates/splash-2-task.html',
         controller: 'SplashCtrl'
       })
 
       .state('start-friend',{
         url: '/start-friend',
-        templateUrl: '/templates/splash-3-friend.html',
+        templateUrl: 'templates/splash-3-friend.html',
         controller: 'SplashCtrl'
       })
 
       .state('dashboard', {
         url: '/dashboard',
-        templateUrl: '/templates/dashboard.html',
+        templateUrl: 'templates/dashboard.html',
         controller: 'DashboardCtrl'
     })
+      .state('start-invite', {
+        url: '/start-invite',
+        templateUrl: 'templates/splash-invite.html',
+        controller: 'SplashCtrl'
+      })
 
     $urlRouterProvider.otherwise('/');
 })

@@ -1,3 +1,4 @@
+<html>
 <ion-view view-title="flosi" hide-nav-bar="true" class="splash-page">
   <ion-content scroll="false">
 
@@ -7,11 +8,31 @@
 
     <div class="introWelcome">What would you like to do?</div>
 
-<form>
+<form
+  name="taskForm"
+  ng-submit="saveTask(form.task)">
 
-  <input class="email-input" type="text" placeholder="Task" ng-model="form.task" onfocus="this.placeholder = ''"
-         onblur="this.placeholder = 'Task'" />
-  <button class="button button-assertive" id="nameEmailSubmit" ng-click="saveTask(form.task)">
+  <input
+  name="task"
+    class="email-input"
+    type="text" placeholder="Task"
+    ng-model="form.task"
+    required
+    ng-minlength="2"
+    ng-maxlength="15">
+  <p ng-show="taskForm.task.$error.minlength"
+     class="help-block"> Be a little more specific.
+  </p>
+
+  <p ng-show="taskForm.task.$error.maxlength"
+     class="help-block">Whoa now that's a bit too long.
+    </p>
+
+  <button
+    type="submit"
+    class="button button-assertive"
+    id="nameEmailSubmit"
+    ng-disabled="taskForm.$invalid || taskForm.task.$error.maxlength || taskForm.task.$error.minlength">
     Submit
   </button>
 </form>
@@ -20,3 +41,4 @@
 
   </ion-content>
 </ion-view>
+</html>

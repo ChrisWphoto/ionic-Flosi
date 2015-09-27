@@ -1,0 +1,23 @@
+<ion-view view-title="flosi" hide-nav-bar="true" class="splash-page">
+  <ion-content scroll="false">
+
+    <div class="padding logo">
+      <h1>Flosi</h1>
+    </div>
+
+
+
+    <div class="introWelcome">
+      It looks like you've been invited by <span style="color:#D04139;"> {{o.friendName}}</span>!
+      They have challenged to you to <span style="color:#D04139;">{{o.task}}</span>
+    </div>
+
+    <div style="width: 100%;text-align: center;margin: 25px 0;">
+    <button class="button button-assertive" ng-click="goDashboard()">
+      Accept Challenge!
+    </button>
+    </div>
+
+
+  </ion-content>
+</ion-view>
