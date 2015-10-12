@@ -92,13 +92,13 @@
 }
 
 #startAppSlide .button {
-  position: absolute;
-  top:50%;
-  left:25%;
-  padding: 8px 50px;
-  font-size: 40px;
+  margin-top: 180px;
+  text-align: center;
+  padding: 8px 28px;
+  font-size: 30px;
   font-family:  "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 400;
   letter-spacing: 2px;
 
 }
+

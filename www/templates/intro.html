@@ -1,6 +1,8 @@
+
+
 <ion-view view-title="flosi" hide-nav-bar="true" class="intro">
 
-  <ion-view view-title="Intro">
+  <ion-view view-title="Intro" ng-controller="MainCtrl">
 
     <ion-slide-box >
 
@@ -35,9 +37,12 @@
       <ion-slide id="startAppSlide">
 
         <div class="introWelcome">Let's Get Started</div>
-        <button class="button button-assertive" ng-click="startApp()">
-          flosi
+        <div style="width: 100%;">
+        <button id="facebookButton" class="button button-assertive" ng-click="login()">
+          Facebook login
         </button>
+        </div>
+
 
       </ion-slide>
     </ion-slide-box>
