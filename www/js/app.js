@@ -12,39 +12,47 @@ angular.module('flosi', ['ionic', 'flosi.controllers', 'flosi.services'])
     $stateProvider
 
 
+      .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'SplashCtrl'
+      })
+
       .state('intro', {
         url: '/',
         templateUrl: 'templates/intro.html',
         controller: 'SplashCtrl'
       })
 
-      .state('start', {
-        url: '/start',
-        templateUrl: 'templates/splash.html',
-        controller: 'SplashCtrl'
-      })
-
-      .state('start-task', {
-        url: '/start-task',
-        templateUrl: 'templates/splash-2-task.html',
-        controller: 'SplashCtrl'
-      })
-
-      .state('start-friend',{
-        url: '/start-friend',
-        templateUrl: 'templates/splash-3-friend.html',
-        controller: 'SplashCtrl'
-      })
-
-      .state('dashboard', {
+      .state('app.dashboard', {
         url: '/dashboard',
-        templateUrl: 'templates/dashboard.html',
-        controller: 'DashboardCtrl'
-    })
-      .state('start-invite', {
-        url: '/start-invite',
-        templateUrl: 'templates/splash-invite.html',
-        controller: 'SplashCtrl'
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/dashboard.html',
+            controller: 'SplashCtrl'
+          }
+        }
+      })
+      .state('app.challenge', {
+        url: '/challenge',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/challenge.html',
+            controller: 'DashboardCtrl'
+          }
+        }
+      })
+
+      .state('app.invite', {
+        url: '/invite',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/splash-3-friend.html',
+            controller: 'SplashCtrl'
+          }
+        }
+
       })
 
     $urlRouterProvider.otherwise('/');

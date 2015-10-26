@@ -2,7 +2,7 @@
 
 <ion-view view-title="flosi" hide-nav-bar="true" class="intro">
 
-  <ion-view view-title="Intro" ng-controller="MainCtrl">
+  <ion-view view-title="Intro" ng-controller="SplashCtrl">
 
     <ion-slide-box >
 
@@ -37,12 +37,12 @@
       <ion-slide id="startAppSlide">
 
         <div class="introWelcome">Let's Get Started</div>
+        <!--<img id="profileImg" ng-src="{{authData.google.profileImageURL}}"/>-->
         <div style="width: 100%;">
-        <button id="facebookButton" class="button button-assertive" ng-click="login()">
-          Facebook login
+        <button id="facebookButton" class="button button-assertive" style="font-size: 22px" ng-click="login()">
+           Login with Google
         </button>
         </div>
-
 
       </ion-slide>
     </ion-slide-box>

@@ -1,8 +1,15 @@
-angular.module('flosi.services', [])
+angular.module('flosi.services', ['firebase'])
 
-.factory('User_Factory', ['$http', function($http){
+
+  .factory('Auth', function($firebaseAuth) {
+    var endPoint = 'https://flossy.firebaseIO.com' ;
+    var usersRef = new Firebase(endPoint);
+    return $firebaseAuth(usersRef);
+  })
+
+.factory('User_Factory', ['$http','$window', function($http, $window){
     //for dev env quickly switching
-    var remote = 'https://flosi-node.herokuapp.com';
+    var remote = 'https://flosi-node-oauth.herokuapp.com';
     var localUrl = 'http://localhost:3000';
 
     var o ={
@@ -11,7 +18,36 @@ angular.module('flosi.services', [])
       task: false,
       friendName: false,
       friendEmail: false,
-      taskCompleted: 0
+      taskCompleted: 0,
+      token: false,
+      first_name: false,
+      last_name: false
+    };
+
+    o.fbRoute = function(){
+     var loginWindow, hasToken, hasEmail;
+
+      loginWindow = $window.open(remote + '/auth/google', '_blank', 'location=no,toolbar=no,hidden=yes,height=300,width=300');
+
+      setTimeout(function(){
+
+      loginWindow.addEventListener('loadstart', function(event){
+
+        alert('event ' + event);
+        hasToken = event.url.indexOf('?token=');
+        hasEmail = event.url.indexOf('&user=');
+        if (hasToken > -1 && hasEmail > -1){
+          o.token = event.url.match("token=(.*)&user=")[1];
+          o.email = event.url.match("&user=(.*)&fname=")[1];
+          o.first_name = event.url.match("&fname=(.*)&lname=")[1];
+          o.last_name = event.url.match("&lname=(.*)")[1];
+          loginWindow.close();
+        }
+
+      });
+
+        alert("Hello"); }, 1500);
+
     };
 
     o.complete = function () { //passing function o object
