@@ -3,8 +3,55 @@ angular.module('flosi.controllers',
     'ionic',
     'flosi.services',
     'angular-svg-round-progress',
-    'firebase'
+    'firebase',
+    'ngCordova'
   ])
+
+.controller("SecureController", function($scope, $state, $ionicHistory, $firebaseArray, $cordovaCamera) {
+
+  //$ionicHistory.clearHistory();
+
+    console.log("inside Secure")
+  $scope.images = [];
+  var fb = new Firebase('https://flossy.firebaseIO.com');
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("users/" + fbAuth.uid);
+    var syncArray = $firebaseArray(userReference.child("images"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("app.challenge");
+    console.log("fbAuth could not be found");
+  }
+
+  $scope.upload = function() {
+    var options = {
+      quality : 75,
+      destinationType : Camera.DestinationType.DATA_URL,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    };
+    try {
+      $cordovaCamera.getPicture(options).then(function (imageData) {
+        syncArray.$add({image: imageData}).then(function () {
+          alert("Image has been uploaded");
+        });
+      }, function (error) {
+        console.error(error);
+      });
+    } catch (err){
+      throw " fatal error camera crashed unavailable";
+    }
+
+  }
+
+})
+
 
 .controller('SplashCtrl',
   [
@@ -14,6 +61,7 @@ angular.module('flosi.controllers',
     'Auth',
     '$ionicSideMenuDelegate',
     '$ionicModal',
+
 
     function($scope, $state, User_Factory, Auth, $ionicSideMenuDelegate, $ionicModal){
 
@@ -106,7 +154,7 @@ angular.module('flosi.controllers',
 
 
     $scope.goChallenge = function(){
-      $state.go('app.challenge');
+      $state.go('app.secure');
     }
 
   }])

@@ -52,8 +52,17 @@ angular.module('flosi', ['ionic', 'flosi.controllers', 'flosi.services'])
             controller: 'SplashCtrl'
           }
         }
-
       })
+      .state('app.secure', {
+        url: '/secure',
+        views: {
+          'menuContent': {
+            templateUrl: "templates/secure.html",
+            controller: "SecureController"
+          }
+        }
+      })
+
 
     $urlRouterProvider.otherwise('/');
 })

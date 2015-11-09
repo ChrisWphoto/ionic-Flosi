@@ -2,7 +2,7 @@ angular.module('flosi.services', ['firebase'])
 
 
   .factory('Auth', function($firebaseAuth) {
-    var endPoint = 'https://flossy.firebaseIO.com' ;
+    var endPoint = 'https://flossy.firebaseIO.com';
     var usersRef = new Firebase(endPoint);
     return $firebaseAuth(usersRef);
   })
