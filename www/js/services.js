@@ -21,7 +21,12 @@ angular.module('flosi.services', ['firebase'])
       taskCompleted: 0,
       token: false,
       first_name: false,
-      last_name: false
+      last_name: false,
+      authData: false
+    };
+
+    o.setAuthData = function(authdata) {
+      o.authData = authdata;
     };
 
     o.fbRoute = function(){

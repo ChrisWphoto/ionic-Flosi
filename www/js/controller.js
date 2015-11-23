@@ -7,11 +7,26 @@ angular.module('flosi.controllers',
     'ngCordova'
   ])
 
-.controller("SecureController", function($scope, $state, $ionicHistory, $firebaseArray, $cordovaCamera) {
+.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+})
 
+.filter('reverseAnything', function() {
+  return function(items) {
+    if(typeof items === 'undefined') { return; }
+    return angular.isArray(items) ?
+      items.slice().reverse() : // If it is an array, split and reverse it
+      (items + '').split('').reverse().join(''); // else make it a string (if it isn't already), and reverse it
+  };
+})
+
+.controller("SecureController", function($scope, $state, $ionicHistory, $firebaseArray, $cordovaCamera, User_Factory) {
+    $scope.o = User_Factory;
   //$ionicHistory.clearHistory();
 
-    console.log("inside Secure")
+    console.log("inside Secure");
   $scope.images = [];
   var fb = new Firebase('https://flossy.firebaseIO.com');
   var fbAuth = fb.getAuth();
@@ -19,6 +34,7 @@ angular.module('flosi.controllers',
     var userReference = fb.child("users/" + fbAuth.uid);
     var syncArray = $firebaseArray(userReference.child("images"));
     $scope.images = syncArray;
+    console.log($scope.images);
   } else {
     $state.go("app.challenge");
     console.log("fbAuth could not be found");
@@ -36,6 +52,7 @@ angular.module('flosi.controllers',
       targetHeight: 500,
       saveToPhotoAlbum: false
     };
+
     try {
       $cordovaCamera.getPicture(options).then(function (imageData) {
         syncArray.$add({image: imageData}).then(function () {
@@ -47,9 +64,7 @@ angular.module('flosi.controllers',
     } catch (err){
       throw " fatal error camera crashed unavailable";
     }
-
   }
-
 })
 
 
@@ -96,6 +111,7 @@ angular.module('flosi.controllers',
         }
         // This will display the user's name in our view
         $scope.authData = authData;
+        User_Factory.setAuthData(authData);
         //console.log(authData);
       })
 

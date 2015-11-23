@@ -34,15 +34,15 @@ angular.module('flosi', ['ionic', 'flosi.controllers', 'flosi.services'])
           }
         }
       })
-      .state('app.challenge', {
-        url: '/challenge',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/challenge.html',
-            controller: 'DashboardCtrl'
-          }
-        }
-      })
+      //.state('app.challenge', {
+      //  url: '/challenge',
+      //  views: {
+      //    'menuContent': {
+      //      templateUrl: 'templates/challenge.html',
+      //      controller: 'DashboardCtrl'
+      //    }
+      //  }
+      //})
 
       .state('app.invite', {
         url: '/invite',
@@ -57,7 +57,7 @@ angular.module('flosi', ['ionic', 'flosi.controllers', 'flosi.services'])
         url: '/secure',
         views: {
           'menuContent': {
-            templateUrl: "templates/secure.html",
+            templateUrl: "templates/photo-stream.html",
             controller: "SecureController"
           }
         }
